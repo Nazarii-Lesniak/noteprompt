@@ -1,0 +1,21 @@
+{
+	"nav": {
+		"home": {
+			"title": "Home",
+			"description": "NotePrompt - a convenient prompt at your fingertips."
+		},
+		"chats": "Chats",
+		"prompts": "Prompts"
+	},
+	"auth": {
+		"signIn": "Sign In",
+		"signOut": "Sign Out",
+		"signUp": "Sign Up"
+	},
+	"common": {
+		"save": "Save",
+		"cancel": "Cancel",
+		"delete": "Delete",
+		"edit": "Edit"
+	}
+}
