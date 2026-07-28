@@ -12,6 +12,40 @@
 		"signOut": "Вийти",
 		"signUp": "Зареєструватися"
 	},
+	"signup": {
+		"title": "Створити обліковий запис",
+		"description": "Заповніть форму нижче, щоб створити обліковий запис.",
+		"labels": {
+			"name": "Ім'я",
+			"email": "Електронна пошта",
+			"password": "Пароль",
+			"confirmPassword": "Підтвердіть пароль"
+		},
+		"placeholders": {
+			"name": "Назарій Лесняк",
+			"email": "example@gmail.com",
+			"password": "●●●●●●●●",
+			"confirmPassword": "●●●●●●●●"
+		},
+		"buttons": {
+			"submit": "Створити акаунт",
+			"submitting": "Створення...",
+			"signUpWithGoogle": "Зареєструватися з Google"
+		},
+		"errors": {
+			"nameRequired": "Введіть ваше ім'я",
+			"emailRequired": "Введіть електронну пошту",
+			"invalidEmail": "Введіть коректну електронну пошту",
+			"passwordRequired": "Введіть пароль",
+			"passwordTooShort": "Пароль має містити щонайменше 8 символів",
+			"passwordsDoNotMatch": "Паролі не збігаються"
+		},
+		"footer": {
+			"or": "АБО",
+			"hasAccount": "Вже є обліковий запис?",
+			"loginLink": "→ Увійти"
+		}
+	},
 	"common": {
 		"save": "Зберегти",
 		"cancel": "Скасувати",

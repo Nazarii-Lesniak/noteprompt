@@ -12,6 +12,40 @@
 		"signOut": "Sign Out",
 		"signUp": "Sign Up"
 	},
+	"signup": {
+		"title": "Create an account",
+		"description": "Fill out the form below to create an account.",
+		"labels": {
+			"name": "Name",
+			"email": "Email",
+			"password": "Password",
+			"confirmPassword": "Confirm password"
+		},
+		"placeholders": {
+			"name": "John Doe",
+			"email": "example@gmail.com",
+			"password": "●●●●●●●●",
+			"confirmPassword": "●●●●●●●●"
+		},
+		"buttons": {
+			"submit": "Create account",
+			"submitting": "Creating...",
+			"signUpWithGoogle": "Sign up with Google"
+		},
+		"errors": {
+			"nameRequired": "Enter your name",
+			"emailRequired": "Enter your email",
+			"invalidEmail": "Enter a valid email",
+			"passwordRequired": "Enter a password",
+			"passwordTooShort": "Password must be at least 8 characters long",
+			"passwordsDoNotMatch": "Passwords do not match"
+		},
+		"footer": {
+			"or": "OR",
+			"hasAccount": "Already have an account?",
+			"loginLink": "→ Log in"
+		}
+	},
 	"common": {
 		"save": "Save",
 		"cancel": "Cancel",
