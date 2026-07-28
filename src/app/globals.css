@@ -1,86 +1,16 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
-  --color-powder-blush-default: #ffa69e;
-  --color-powder-blush-100: #ffedec;
-  --color-powder-blush-200: #ffdbd8;
-  --color-powder-blush-300: #ffcac5;
-  --color-powder-blush-400: #ffb8b1;
-  --color-powder-blush-500: #ffa69e;
-  --color-powder-blush-600: #ff5a4b;
-  --color-powder-blush-700: #f81500;
-  --color-powder-blush-800: #a50e00;
-  --color-powder-blush-900: #530700;
-
-  --color-eggshell-default: #faf3dd;
-  --color-eggshell-100: #fefdf8;
-  --color-eggshell-200: #fdfaf1;
-  --color-eggshell-300: #fcf8ea;
-  --color-eggshell-400: #fbf5e3;
-  --color-eggshell-500: #faf3dd;
-  --color-eggshell-600: #edd68a;
-  --color-eggshell-700: #e1ba38;
-  --color-eggshell-800: #a38318;
-  --color-eggshell-900: #52410c;
-
-  --color-icy-aqua-default: #b8f2e6;
-  --color-icy-aqua-100: #f1fcfa;
-  --color-icy-aqua-200: #e3faf5;
-  --color-icy-aqua-300: #d6f7f1;
-  --color-icy-aqua-400: #c8f5ec;
-  --color-icy-aqua-500: #b8f2e6;
-  --color-icy-aqua-600: #72e5ce;
-  --color-icy-aqua-700: #29d8b5;
-  --color-icy-aqua-800: #1b9179;
-  --color-icy-aqua-900: #0d483d;
-
-  --color-light-blue-default: #aed9e0;
-  --color-light-blue-100: #eff7f9;
-  --color-light-blue-200: #def0f3;
-  --color-light-blue-300: #cee8ec;
-  --color-light-blue-400: #bee1e6;
-  --color-light-blue-500: #aed9e0;
-  --color-light-blue-600: #74bfca;
-  --color-light-blue-700: #429fad;
-  --color-light-blue-800: #2c6a73;
-  --color-light-blue-900: #16353a;
-
-  --color-blue-slate-default: #5e6472;
-  --color-blue-slate-100: #dee0e4;
-  --color-blue-slate-200: #bdc0c9;
-  --color-blue-slate-300: #9ca1ae;
-  --color-blue-slate-400: #7b8293;
-  --color-blue-slate-500: #5e6472;
-  --color-blue-slate-600: #4b505c;
-  --color-blue-slate-700: #383c45;
-  --color-blue-slate-800: #26282e;
-  --color-blue-slate-900: #131417;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-pearl: #faf3dd;   /* Primal bg */
+  --color-mint: #b8f2e6;    /* Secondary accents */
+  --color-sky: #aed9e0;     /* Info elements, icons, chips */
+  --color-slate: #5e6472;   /* Primary text */
+  --color-coral: #fb8888;   /* Danger */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
