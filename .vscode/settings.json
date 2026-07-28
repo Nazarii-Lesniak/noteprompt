@@ -1,5 +1,6 @@
 {
 	"deno.enable": true,
 	"deno.unstable": [],
-	"deno.enablePaths": ["supabase/functions"]
+	"deno.enablePaths": ["supabase/functions"],
+	"css.lint.unknownAtRules": "ignore"
 }
