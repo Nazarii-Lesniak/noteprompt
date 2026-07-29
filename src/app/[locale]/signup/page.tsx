@@ -2,6 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
 
 export default function SignupForm() {
 	const t = useTranslations('signup');
@@ -13,17 +15,17 @@ export default function SignupForm() {
 				<p className="text-slate">{t('description')}</p>
 			</hgroup>
 
-			<form className="flex flex-col gap-4 mb-6">
+			<form className="flex flex-col gap-4">
 				<div className="flex flex-col">
 					<label
 						htmlFor="name"
 						className="text-slate">
 						{t('labels.name')}
 					</label>
-					<input
+					<Input
 						id="name"
+						type="text"
 						placeholder={t('placeholders.name')}
-						className="bg-pearl text-slate rounded-xl p-2 transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2"
 					/>
 					<p role="alert"></p>
 				</div>
@@ -34,10 +36,10 @@ export default function SignupForm() {
 						className="text-slate">
 						{t('labels.email')}
 					</label>
-					<input
+					<Input
 						id="email"
+						type="email"
 						placeholder={t('placeholders.email')}
-						className="bg-pearl text-slate rounded-xl p-2 transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2"
 					/>
 					<p role="alert"></p>
 				</div>
@@ -48,10 +50,10 @@ export default function SignupForm() {
 						className="text-slate">
 						{t('labels.password')}
 					</label>
-					<input
+					<Input
 						id="password"
+						type="password"
 						placeholder={t('placeholders.password')}
-						className="bg-pearl text-slate rounded-xl p-2 transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2"
 					/>
 					<p role="alert"></p>
 				</div>
@@ -62,36 +64,36 @@ export default function SignupForm() {
 						className="text-slate">
 						{t('labels.confirmPassword')}
 					</label>
-					<input
+					<Input
 						id="confirmPassword"
+						type="password"
 						placeholder={t('placeholders.confirmPassword')}
-						className="bg-pearl text-slate rounded-xl p-2 transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint focus-visible:ring-offset-2"
 					/>
 					<p role="alert"></p>
 				</div>
 
-				<button
+				<Button
 					type="submit"
-					className="cursor-pointer font-bold text-slate bg-mint rounded-xl p-2 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-sm hover:shadow-slate">
+					variant="submit">
 					{t('buttons.submit')}
-				</button>
+				</Button>
 			</form>
 
-			<div className="flex items-center font-bold text-pearl text-sm before:flex-1 before:border-t-3 before:border-pearl before:mr-3 after:flex-1 after:border-t-3 after:border-pearl after:ml-3 my-4">
+			<div className="flex items-center font-bold text-pearl text-sm before:flex-1 before:border-t-3 before:border-pearl before:mr-3 after:flex-1 after:border-t-3 after:border-pearl after:ml-3 mb-6">
 				{t('footer.or')}
 			</div>
 
-			<button
+			<Button
 				type="button"
-				className="cursor-pointer w-full mb-6 font-bold text-pearl bg-coral rounded-xl p-2 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-sm hover:shadow-slate">
+				variant="signupWithGoogle">
 				{t('buttons.signUpWithGoogle')}
-			</button>
+			</Button>
 
 			<div className="flex items-center gap-2 justify-between">
 				<p className="text-slate ">{t('footer.hasAccount')} </p>
 				<Link
 					href="/login"
-					className="text-slate transition-[filter] duration-300 hover:brightness-1000">
+					className="text-slate transition-colors duration-300 hover:text-slate-800 hover:underline hover:underline-offset-4 hover:decoration-slate">
 					{t('footer.loginLink')}
 				</Link>
 			</div>
