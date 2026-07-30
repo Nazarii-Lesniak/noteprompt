@@ -10,7 +10,7 @@ export function Button({
 	...props
 }: ButtonProps) {
 	const baseStyles =
-		'cursor-pointer w-full mb-6 font-bold rounded-xl p-2 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-[2px_2px_4px_rgba(0,0,0,0.1)]';
+		'cursor-pointer w-full font-bold rounded-xl p-2 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-[2px_2px_4px_rgba(0,0,0,0.1)]';
 
 	const variants = {
 		submit: 'text-slate bg-mint hover:shadow-slate',
