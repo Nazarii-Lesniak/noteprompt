@@ -12,7 +12,7 @@
 		"signOut": "Sign Out",
 		"signUp": "Sign Up"
 	},
-	"signup": {
+	"signUp": {
 		"title": "Create an account",
 		"description": "Fill out the form below to create an account.",
 		"labels": {
@@ -47,7 +47,36 @@
 		"footer": {
 			"or": "OR",
 			"hasAccount": "Already have an account?",
-			"loginLink": "→ Log in"
+			"signInLink": "→ Sign in"
+		}
+	},
+	"signIn": {
+		"title": "Sign in to account",
+		"description": "Enter your credentials to sign in.",
+		"labels": {
+			"email": "Email",
+			"password": "Password"
+		},
+		"placeholders": {
+			"email": "example@gmail.com",
+			"password": "●●●●●●●●"
+		},
+		"buttons": {
+			"submit": "Sign in",
+			"submitting": "Signing in...",
+			"signInWithGoogle": "Sign in with Google"
+		},
+		"errors": {
+			"emailRequired": "Enter your email",
+			"invalidEmail": "Enter a valid email",
+			"passwordRequired": "Enter a password",
+			"invalidCredentials": "Invalid email or password"
+		},
+		"footer": {
+			"or": "OR",
+			"noAccount": "Don't have an account?",
+			"signupLink": "→ Sign up",
+			"forgotPassword": "Forgot password?"
 		}
 	},
 	"common": {

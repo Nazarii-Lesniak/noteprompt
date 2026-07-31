@@ -12,7 +12,7 @@
 		"signOut": "Вийти",
 		"signUp": "Зареєструватися"
 	},
-	"signup": {
+	"signUp": {
 		"title": "Створити обліковий запис",
 		"description": "Заповніть форму нижче, щоб створити обліковий запис.",
 		"labels": {
@@ -47,7 +47,36 @@
 		"footer": {
 			"or": "АБО",
 			"hasAccount": "Вже є обліковий запис?",
-			"loginLink": "→ Увійти"
+			"signInLink": "→ Увійти"
+		}
+	},
+	"signIn": {
+		"title": "Увійти в акаунт",
+		"description": "Введіть свої дані для входу в систему.",
+		"labels": {
+			"email": "Електронна пошта",
+			"password": "Пароль"
+		},
+		"placeholders": {
+			"email": "example@gmail.com",
+			"password": "●●●●●●●●"
+		},
+		"buttons": {
+			"submit": "Увійти",
+			"submitting": "Вхід...",
+			"signInWithGoogle": "Увійти з Google"
+		},
+		"errors": {
+			"emailRequired": "Введіть електронну пошту",
+			"invalidEmail": "Введіть коректну електронну пошту",
+			"passwordRequired": "Введіть пароль",
+			"invalidCredentials": "Невірний email або пароль"
+		},
+		"footer": {
+			"or": "АБО",
+			"noAccount": "Немає облікового запису?",
+			"signupLink": "→ Зареєструватися",
+			"forgotPassword": "Забули пароль?"
 		}
 	},
 	"common": {
