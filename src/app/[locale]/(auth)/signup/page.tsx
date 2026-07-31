@@ -9,7 +9,7 @@ export default async function SignupPage() {
 
 	return (
 		<div className="m-auto w-full max-w-md rounded-2xl p-6 bg-sky ">
-			<hgroup className="text-center">
+			<hgroup className="text-center mb-2">
 				<h1 className="text-2xl font-semibold text-slate">{t('title')}</h1>
 				<p className="text-slate">{t('description')}</p>
 			</hgroup>

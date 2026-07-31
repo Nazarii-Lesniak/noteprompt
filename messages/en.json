@@ -32,6 +32,10 @@
 			"submitting": "Creating...",
 			"signUpWithGoogle": "Sign up with Google"
 		},
+		"success": {
+			"ok": "Registration successful! Check your email to confirm your account.",
+			"emailAlreadyExists": "This email is already taken."
+		},
 		"errors": {
 			"nameRequired": "Enter your name",
 			"emailRequired": "Enter your email",

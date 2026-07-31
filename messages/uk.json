@@ -32,6 +32,10 @@
 			"submitting": "Створення...",
 			"signUpWithGoogle": "Зареєструватися з Google"
 		},
+		"success": {
+			"ok": "Реєстрація успішна! Перевірте ваш Email для підтвердження акаунту.",
+			"emailAlreadyExists": "Цей Email вже зайнятий."
+		},
 		"errors": {
 			"nameRequired": "Введіть ваше ім'я",
 			"emailRequired": "Введіть електронну пошту",

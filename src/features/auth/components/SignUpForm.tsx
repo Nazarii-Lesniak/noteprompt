@@ -1,11 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-
-import { Input } from '@/components/ui/Input';
-import { FormField } from './FormField';
-import { Button } from '@/components/ui/Button';
 import { useTranslations } from 'next-intl';
+
+import { createClient } from '@/lib/supabase/client';
+import { Input } from '@/components/ui/Input';
+import { Button } from '@/components/ui/Button';
+import { FormField } from './FormField';
 
 interface Inputs {
 	name: string;
@@ -14,18 +16,66 @@ interface Inputs {
 	confirmPassword: string;
 }
 
+const supabase = createClient();
+
 export function SignupForm() {
+	const [isSuccess, setIsSuccess] = useState(false);
+
 	const t = useTranslations('signup');
 	const {
 		register,
 		handleSubmit,
 		getValues,
-		formState: { errors },
-	} = useForm<Inputs>();
+		setError,
+		formState: { errors, isSubmitting },
+	} = useForm<Inputs>({ mode: 'onTouched' });
 
-	const onSubmit: SubmitHandler<Inputs> = data => {
-		console.log(data);
+	const onSubmit: SubmitHandler<Inputs> = async data => {
+		const { data: authData, error } = await supabase.auth.signUp({
+			email: data.email,
+			password: data.password,
+			options: {
+				emailRedirectTo: `${window.location.origin}/login`,
+				data: {
+					name: data.name,
+				},
+			},
+		});
+
+		if (error) {
+			const isEmailExists =
+				error.message.toLowerCase().includes('already') || error.status === 422;
+
+			setError('email', {
+				type: 'server',
+				message: isEmailExists
+					? t('success.emailAlreadyExists')
+					: error.message,
+			});
+			return;
+		}
+
+		const userIdentities = authData?.user?.identities;
+
+		if (userIdentities && userIdentities.length === 0) {
+			setError('email', {
+				type: 'manual',
+				message: t('success.emailAlreadyExists'),
+			});
+			return;
+		}
+
+		setIsSuccess(true);
 	};
+
+	if (isSuccess) {
+		return (
+			<div className="text-center p-4 bg-green-50 text-slate rounded-md">
+				<p>{t('success.ok')}</p>
+			</div>
+		);
+	}
+
 	return (
 		<form
 			className="flex flex-col gap-4"
@@ -53,7 +103,7 @@ export function SignupForm() {
 					{...register('email', {
 						required: t('errors.emailRequired'),
 						pattern: {
-							value: /^\S+@\S+$/i,
+							value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 							message: t('errors.invalidEmail'),
 						},
 					})}
@@ -74,6 +124,7 @@ export function SignupForm() {
 							value: 8,
 							message: t('errors.passwordTooShort'),
 						},
+						deps: ['confirmPassword'],
 					})}
 				/>
 			</FormField>
@@ -98,8 +149,9 @@ export function SignupForm() {
 			<div>
 				<Button
 					type="submit"
-					variant="submit">
-					{t('buttons.submit')}
+					variant="submit"
+					disabled={isSubmitting}>
+					{isSubmitting ? t('buttons.submitting') : t('buttons.submit')}
 				</Button>
 			</div>
 		</form>
