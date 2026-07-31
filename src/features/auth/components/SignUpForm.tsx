@@ -18,10 +18,10 @@ interface Inputs {
 
 const supabase = createClient();
 
-export function SignupForm() {
+export function SignUpForm() {
 	const [isSuccess, setIsSuccess] = useState(false);
 
-	const t = useTranslations('signup');
+	const t = useTranslations('signUp');
 	const {
 		register,
 		handleSubmit,
@@ -35,7 +35,7 @@ export function SignupForm() {
 			email: data.email,
 			password: data.password,
 			options: {
-				emailRedirectTo: `${window.location.origin}/login`,
+				emailRedirectTo: `${window.location.origin}/sign-in`,
 				data: {
 					name: data.name,
 				},
