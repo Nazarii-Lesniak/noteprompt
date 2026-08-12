@@ -6,48 +6,50 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { type Locale } from '@/i18n/request';
+import { AuthProvider } from '@/components/providers/AuthProvider';
 
 const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-	title: 'Note Prompt',
-	description: 'Generated using Note Prompt',
+  title: 'Note Prompt',
+  description: 'Generated using Note Prompt',
 };
 
 interface LocaleLayoutProps {
-	children: React.ReactNode;
-	params: Promise<{ locale: string }>;
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }
 
 export default async function LocaleLayout({
-	children,
-	params,
+  children,
+  params,
 }: LocaleLayoutProps) {
-	const { locale } = await params;
+  const { locale } = await params;
 
-	if (!routing.locales.includes(locale as Locale)) {
-		notFound();
-	}
+  if (!routing.locales.includes(locale as Locale)) {
+    notFound();
+  }
 
-	const messages = await getMessages();
+  const messages = await getMessages();
 
-	return (
-		<html
-			lang={locale}
-			className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-			<body className="min-h-full flex flex-col bg-pearl">
-				<NextIntlClientProvider messages={messages}>
-					{children}
-				</NextIntlClientProvider>
-			</body>
-		</html>
-	);
+  return (
+    <html
+      lang={locale}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col bg-pearl">
+        <NextIntlClientProvider messages={messages}>
+          <AuthProvider>{children}</AuthProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
 }
