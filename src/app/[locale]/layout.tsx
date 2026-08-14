@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { type Locale } from '@/i18n/request';
 import { AuthProvider } from '@/components/providers/AuthProvider';
+import Header from '@/components/Header';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -47,7 +48,10 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col bg-pearl">
         <NextIntlClientProvider messages={messages}>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <Header />
+            {children}
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

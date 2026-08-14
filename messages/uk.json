@@ -1,88 +1,90 @@
 {
-	"nav": {
-		"home": {
-			"title": "Головна",
-			"description": "NotePrompt - зручний промпт у вас під рукою."
-		},
-		"chats": "Чати",
-		"prompts": "Промпти"
-	},
-	"auth": {
-		"signIn": "Увійти",
-		"signOut": "Вийти",
-		"signUp": "Зареєструватися"
-	},
-	"signUp": {
-		"title": "Створити обліковий запис",
-		"description": "Заповніть форму нижче, щоб створити обліковий запис.",
-		"labels": {
-			"name": "Ім'я",
-			"email": "Електронна пошта",
-			"password": "Пароль",
-			"confirmPassword": "Підтвердіть пароль"
-		},
-		"placeholders": {
-			"name": "Назарій Лесняк",
-			"email": "example@gmail.com",
-			"password": "●●●●●●●●",
-			"confirmPassword": "●●●●●●●●"
-		},
-		"buttons": {
-			"submit": "Створити акаунт",
-			"submitting": "Створення...",
-			"signUpWithGoogle": "Зареєструватися з Google"
-		},
-		"success": {
-			"ok": "Реєстрація успішна! Перевірте ваш Email для підтвердження акаунту.",
-			"emailAlreadyExists": "Цей Email вже зайнятий."
-		},
-		"errors": {
-			"nameRequired": "Введіть ваше ім'я",
-			"emailRequired": "Введіть електронну пошту",
-			"invalidEmail": "Введіть коректну електронну пошту",
-			"passwordRequired": "Введіть пароль",
-			"passwordTooShort": "Пароль має містити щонайменше 8 символів",
-			"passwordsDoNotMatch": "Паролі не збігаються"
-		},
-		"footer": {
-			"or": "АБО",
-			"hasAccount": "Вже є обліковий запис?",
-			"signInLink": "→ Увійти"
-		}
-	},
-	"signIn": {
-		"title": "Увійти в акаунт",
-		"description": "Введіть свої дані для входу в систему.",
-		"labels": {
-			"email": "Електронна пошта",
-			"password": "Пароль"
-		},
-		"placeholders": {
-			"email": "example@gmail.com",
-			"password": "●●●●●●●●"
-		},
-		"buttons": {
-			"submit": "Увійти",
-			"submitting": "Вхід...",
-			"signInWithGoogle": "Увійти з Google"
-		},
-		"errors": {
-			"emailRequired": "Введіть електронну пошту",
-			"invalidEmail": "Введіть коректну електронну пошту",
-			"passwordRequired": "Введіть пароль",
-			"invalidCredentials": "Невірний email або пароль"
-		},
-		"footer": {
-			"or": "АБО",
-			"noAccount": "Немає облікового запису?",
-			"signupLink": "→ Зареєструватися",
-			"forgotPassword": "Забули пароль?"
-		}
-	},
-	"common": {
-		"save": "Зберегти",
-		"cancel": "Скасувати",
-		"delete": "Видалити",
-		"edit": "Редагувати"
-	}
+  "nav": {
+    "home": {
+      "title": "Головна",
+      "description": "NotePrompt - зручний промпт у вас під рукою."
+    },
+    "prompts": "Промпти",
+    "settings": "Налаштування",
+    "open": "Відкрити",
+    "close": "Закрити"
+  },
+  "auth": {
+    "signIn": "Увійти",
+    "signOut": "Вийти",
+    "signUp": "Зареєструватися"
+  },
+  "signUp": {
+    "title": "Створити обліковий запис",
+    "description": "Заповніть форму нижче, щоб створити обліковий запис.",
+    "labels": {
+      "name": "Ім'я",
+      "email": "Електронна пошта",
+      "password": "Пароль",
+      "confirmPassword": "Підтвердіть пароль"
+    },
+    "placeholders": {
+      "name": "Назарій Лесняк",
+      "email": "example@gmail.com",
+      "password": "●●●●●●●●",
+      "confirmPassword": "●●●●●●●●"
+    },
+    "buttons": {
+      "submit": "Створити акаунт",
+      "submitting": "Створення...",
+      "signUpWithGoogle": "Зареєструватися з Google"
+    },
+    "success": {
+      "ok": "Реєстрація успішна! Перевірте ваш Email для підтвердження акаунту.",
+      "emailAlreadyExists": "Цей Email вже зайнятий."
+    },
+    "errors": {
+      "nameRequired": "Введіть ваше ім'я",
+      "emailRequired": "Введіть електронну пошту",
+      "invalidEmail": "Введіть коректну електронну пошту",
+      "passwordRequired": "Введіть пароль",
+      "passwordTooShort": "Пароль має містити щонайменше 8 символів",
+      "passwordsDoNotMatch": "Паролі не збігаються"
+    },
+    "footer": {
+      "or": "АБО",
+      "hasAccount": "Вже є обліковий запис?",
+      "signInLink": "→ Увійти"
+    }
+  },
+  "signIn": {
+    "title": "Увійти в акаунт",
+    "description": "Введіть свої дані для входу в систему.",
+    "labels": {
+      "email": "Електронна пошта",
+      "password": "Пароль"
+    },
+    "placeholders": {
+      "email": "example@gmail.com",
+      "password": "●●●●●●●●"
+    },
+    "buttons": {
+      "submit": "Увійти",
+      "submitting": "Вхід...",
+      "signInWithGoogle": "Увійти з Google"
+    },
+    "errors": {
+      "emailRequired": "Введіть електронну пошту",
+      "invalidEmail": "Введіть коректну електронну пошту",
+      "passwordRequired": "Введіть пароль",
+      "invalidCredentials": "Невірний email або пароль"
+    },
+    "footer": {
+      "or": "АБО",
+      "noAccount": "Немає облікового запису?",
+      "signupLink": "→ Зареєструватися",
+      "forgotPassword": "Забули пароль?"
+    }
+  },
+  "common": {
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "delete": "Видалити",
+    "edit": "Редагувати"
+  }
 }

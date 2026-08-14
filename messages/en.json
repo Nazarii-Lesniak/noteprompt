@@ -1,88 +1,90 @@
 {
-	"nav": {
-		"home": {
-			"title": "Home",
-			"description": "NotePrompt - a convenient prompt at your fingertips."
-		},
-		"chats": "Chats",
-		"prompts": "Prompts"
-	},
-	"auth": {
-		"signIn": "Sign In",
-		"signOut": "Sign Out",
-		"signUp": "Sign Up"
-	},
-	"signUp": {
-		"title": "Create an account",
-		"description": "Fill out the form below to create an account.",
-		"labels": {
-			"name": "Name",
-			"email": "Email",
-			"password": "Password",
-			"confirmPassword": "Confirm password"
-		},
-		"placeholders": {
-			"name": "John Doe",
-			"email": "example@gmail.com",
-			"password": "●●●●●●●●",
-			"confirmPassword": "●●●●●●●●"
-		},
-		"buttons": {
-			"submit": "Create account",
-			"submitting": "Creating...",
-			"signUpWithGoogle": "Sign up with Google"
-		},
-		"success": {
-			"ok": "Registration successful! Check your email to confirm your account.",
-			"emailAlreadyExists": "This email is already taken."
-		},
-		"errors": {
-			"nameRequired": "Enter your name",
-			"emailRequired": "Enter your email",
-			"invalidEmail": "Enter a valid email",
-			"passwordRequired": "Enter a password",
-			"passwordTooShort": "Password must be at least 8 characters long",
-			"passwordsDoNotMatch": "Passwords do not match"
-		},
-		"footer": {
-			"or": "OR",
-			"hasAccount": "Already have an account?",
-			"signInLink": "→ Sign in"
-		}
-	},
-	"signIn": {
-		"title": "Sign in to account",
-		"description": "Enter your credentials to sign in.",
-		"labels": {
-			"email": "Email",
-			"password": "Password"
-		},
-		"placeholders": {
-			"email": "example@gmail.com",
-			"password": "●●●●●●●●"
-		},
-		"buttons": {
-			"submit": "Sign in",
-			"submitting": "Signing in...",
-			"signInWithGoogle": "Sign in with Google"
-		},
-		"errors": {
-			"emailRequired": "Enter your email",
-			"invalidEmail": "Enter a valid email",
-			"passwordRequired": "Enter a password",
-			"invalidCredentials": "Invalid email or password"
-		},
-		"footer": {
-			"or": "OR",
-			"noAccount": "Don't have an account?",
-			"signupLink": "→ Sign up",
-			"forgotPassword": "Forgot password?"
-		}
-	},
-	"common": {
-		"save": "Save",
-		"cancel": "Cancel",
-		"delete": "Delete",
-		"edit": "Edit"
-	}
+  "nav": {
+    "home": {
+      "title": "Home",
+      "description": "NotePrompt - a convenient prompt at your fingertips."
+    },
+    "prompts": "Prompts",
+    "settings": "Settings",
+    "open": "Open",
+    "close": "Close"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up"
+  },
+  "signUp": {
+    "title": "Create an account",
+    "description": "Fill out the form below to create an account.",
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password"
+    },
+    "placeholders": {
+      "name": "John Doe",
+      "email": "example@gmail.com",
+      "password": "●●●●●●●●",
+      "confirmPassword": "●●●●●●●●"
+    },
+    "buttons": {
+      "submit": "Create account",
+      "submitting": "Creating...",
+      "signUpWithGoogle": "Sign up with Google"
+    },
+    "success": {
+      "ok": "Registration successful! Check your email to confirm your account.",
+      "emailAlreadyExists": "This email is already taken."
+    },
+    "errors": {
+      "nameRequired": "Enter your name",
+      "emailRequired": "Enter your email",
+      "invalidEmail": "Enter a valid email",
+      "passwordRequired": "Enter a password",
+      "passwordTooShort": "Password must be at least 8 characters long",
+      "passwordsDoNotMatch": "Passwords do not match"
+    },
+    "footer": {
+      "or": "OR",
+      "hasAccount": "Already have an account?",
+      "signInLink": "→ Sign in"
+    }
+  },
+  "signIn": {
+    "title": "Sign in to account",
+    "description": "Enter your credentials to sign in.",
+    "labels": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "placeholders": {
+      "email": "example@gmail.com",
+      "password": "●●●●●●●●"
+    },
+    "buttons": {
+      "submit": "Sign in",
+      "submitting": "Signing in...",
+      "signInWithGoogle": "Sign in with Google"
+    },
+    "errors": {
+      "emailRequired": "Enter your email",
+      "invalidEmail": "Enter a valid email",
+      "passwordRequired": "Enter a password",
+      "invalidCredentials": "Invalid email or password"
+    },
+    "footer": {
+      "or": "OR",
+      "noAccount": "Don't have an account?",
+      "signupLink": "→ Sign up",
+      "forgotPassword": "Forgot password?"
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  }
 }
