@@ -5,9 +5,7 @@ import { useState } from 'react';
 import { useLayoutStore } from '@/store/useLayoutStore';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useTranslations } from 'next-intl';
-
-const linkBaseClass =
-  'cursor-pointer font-bold rounded-xl p-2 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-[2px_2px_4px_rgba(0,0,0,0.1)]';
+import { LINK_BASE_CLASS } from '../app/constants/styles';
 
 export default function Header() {
   const toggleSidebar = useLayoutStore((store) => store.toggleSidebar);
@@ -24,10 +22,10 @@ export default function Header() {
 
   return (
     <header className="relative border-b-4 border-sky rounded-full shadow-sm mt-1">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className={`${linkBaseClass} text-xl text-slate bg-mint hover:shadow-slate`}
+          className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
           onClick={toggleSidebar}
         >
           NotePrompt
@@ -39,7 +37,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${linkBaseClass} text-md text-slate bg-mint hover:shadow-slate`}
+                className={`${LINK_BASE_CLASS} text-md text-slate bg-mint hover:shadow-slate`}
               >
                 {link.label}
               </Link>
@@ -51,7 +49,7 @@ export default function Header() {
           {user ? (
             <button
               onClick={signOut}
-              className={`${linkBaseClass} text-pearl bg-coral hover:shadow-slate`}
+              className={`${LINK_BASE_CLASS} text-pearl bg-coral hover:shadow-slate`}
             >
               {t('auth.signOut')}
             </button>
@@ -59,13 +57,13 @@ export default function Header() {
             <>
               <Link
                 href="/sign-in"
-                className={`${linkBaseClass} text-slate bg-mint hover:shadow-slate`}
+                className={`${LINK_BASE_CLASS} text-slate bg-mint hover:shadow-slate`}
               >
                 {t('auth.signIn')}
               </Link>
               <Link
                 href="/sign-up"
-                className={`${linkBaseClass} text-slate bg-mint hover:shadow-slate`}
+                className={`${LINK_BASE_CLASS} text-slate bg-mint hover:shadow-slate`}
               >
                 {t('auth.signUp')}
               </Link>
@@ -79,13 +77,13 @@ export default function Header() {
         >
           {menuOpen ? (
             <span
-              className={`${linkBaseClass} text-xl text-slate bg-mint hover:shadow-slate`}
+              className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
             >
               {t('nav.close')}
             </span>
           ) : (
             <span
-              className={`${linkBaseClass} text-xl text-slate bg-mint hover:shadow-slate`}
+              className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
             >
               {t('nav.open')}
             </span>
@@ -101,7 +99,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`${linkBaseClass} text-xl text-slate bg-mint hover:shadow-slate`}
+                  className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -113,7 +111,7 @@ export default function Header() {
                   signOut();
                   setMenuOpen(false);
                 }}
-                className={`${linkBaseClass} text-xl text-pearl bg-coral hover:shadow-slate`}
+                className={`${LINK_BASE_CLASS} text-xl text-pearl bg-coral hover:shadow-slate`}
               >
                 {t('auth.signOut')}
               </button>
@@ -121,14 +119,14 @@ export default function Header() {
               <>
                 <Link
                   href="/sign-in"
-                  className={`${linkBaseClass} text-xl text-slate bg-mint hover:shadow-slate`}
+                  className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {t('auth.signIn')}
                 </Link>
                 <Link
                   href="/sign-up"
-                  className={`${linkBaseClass} text-xl text-slate bg-mint hover:shadow-slate`}
+                  className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {t('auth.signUp')}

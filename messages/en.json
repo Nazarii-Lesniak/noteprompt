@@ -9,6 +9,18 @@
     "open": "Open",
     "close": "Close"
   },
+  "sidebar": {
+    "buttons": {
+      "newChat": "New chat"
+    },
+    "inputs": {
+      "placeholder": "Search chat..."
+    },
+    "labels": {
+      "quickPrompts": "Quick prompts",
+      "chatHistory": "Chat history"
+    }
+  },
   "auth": {
     "signIn": "Sign In",
     "signOut": "Sign Out",

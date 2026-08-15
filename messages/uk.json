@@ -9,6 +9,18 @@
     "open": "Відкрити",
     "close": "Закрити"
   },
+  "sidebar": {
+    "buttons": {
+      "newChat": "Новий чат"
+    },
+    "inputs": {
+      "placeholder": "Пошук чату..."
+    },
+    "labels": {
+      "quickPrompts": "Швидкі промпти",
+      "chatHistory": "Історія чатів"
+    }
+  },
   "auth": {
     "signIn": "Увійти",
     "signOut": "Вийти",
