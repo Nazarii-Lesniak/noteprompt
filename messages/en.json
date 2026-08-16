@@ -47,13 +47,13 @@
       "signUpWithGoogle": "Sign up with Google"
     },
     "success": {
-      "ok": "Registration successful! Check your email to confirm your account.",
-      "emailAlreadyExists": "This email is already taken."
+      "ok": "Registration successful! Check your email to confirm your account."
     },
     "errors": {
       "nameRequired": "Enter your name",
       "emailRequired": "Enter your email",
       "invalidEmail": "Enter a valid email",
+      "emailAlreadyExists": "This email is already taken.",
       "passwordRequired": "Enter a password",
       "passwordTooShort": "Password must be at least 8 characters long",
       "passwordsDoNotMatch": "Passwords do not match"
