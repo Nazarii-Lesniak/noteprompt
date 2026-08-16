@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { useLayoutStore } from '@/store/useLayoutStore';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useTranslations } from 'next-intl';
-import { LINK_BASE_CLASS } from '../app/constants/styles';
+import { LINK_BASE_CLASS } from '../constants/styles';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const toggleSidebar = useLayoutStore((store) => store.toggleSidebar);
@@ -46,6 +47,7 @@ export default function Header() {
         )}
 
         <div className="hidden md:flex items-center space-x-2">
+          <LanguageSwitcher />
           {user ? (
             <button
               onClick={signOut}
@@ -94,6 +96,7 @@ export default function Header() {
       {menuOpen && (
         <div className="absolute top-[calc(100%+0.5rem)] w-[50dvw] right-10 md:hidden bg-pearl rounded-2xl shadow-lg border border-sky p-4 border-b-4">
           <nav className="flex flex-col items-center px-4 pt-2 pb-3 space-y-2">
+            <LanguageSwitcher />
             {user &&
               navLinks.map((link) => (
                 <Link
