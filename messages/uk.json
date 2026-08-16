@@ -47,13 +47,13 @@
       "signUpWithGoogle": "Зареєструватися з Google"
     },
     "success": {
-      "ok": "Реєстрація успішна! Перевірте ваш Email для підтвердження акаунту.",
-      "emailAlreadyExists": "Цей Email вже зайнятий."
+      "ok": "Реєстрація успішна! Перевірте ваш Email для підтвердження акаунту."
     },
     "errors": {
       "nameRequired": "Введіть ваше ім'я",
       "emailRequired": "Введіть електронну пошту",
       "invalidEmail": "Введіть коректну електронну пошту",
+      "emailAlreadyExists": "Цей Email вже зайнятий.",
       "passwordRequired": "Введіть пароль",
       "passwordTooShort": "Пароль має містити щонайменше 8 символів",
       "passwordsDoNotMatch": "Паролі не збігаються"
