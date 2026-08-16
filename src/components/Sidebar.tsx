@@ -4,7 +4,7 @@ import { useLayoutStore } from '@/store/useLayoutStore';
 import { useState } from 'react';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
-import { useTranslations } from 'use-intl';
+import { useTranslations } from 'next-intl';
 
 export default function Sidebar() {
   const { isSidebarOpen, toggleSidebar } = useLayoutStore();
