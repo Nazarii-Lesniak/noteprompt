@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { useLayoutStore } from '@/store/useLayoutStore';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useTranslations } from 'next-intl';
-import { LINK_BASE_CLASS } from '../constants/styles';
 import LanguageSwitcher from './LanguageSwitcher';
+import { LinkButton } from './ui/LinkButton';
+import { buttonVariants } from './ui/buttons.variants';
 
 export default function Header() {
   const toggleSidebar = useLayoutStore((store) => store.toggleSidebar);
@@ -24,13 +25,9 @@ export default function Header() {
   return (
     <header className="relative border-b-4 border-sky rounded-full shadow-sm mt-1">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
-          onClick={toggleSidebar}
-        >
+        <LinkButton href="/" variant="navLink" onClick={toggleSidebar}>
           NotePrompt
-        </Link>
+        </LinkButton>
 
         {user && (
           <nav className="hidden md:flex space-x-6">
@@ -38,7 +35,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${LINK_BASE_CLASS} text-md text-slate bg-mint hover:shadow-slate`}
+                className={buttonVariants({ variant: 'navLink' })}
               >
                 {link.label}
               </Link>
@@ -51,7 +48,7 @@ export default function Header() {
           {user ? (
             <button
               onClick={signOut}
-              className={`${LINK_BASE_CLASS} text-pearl bg-coral hover:shadow-slate`}
+              className={buttonVariants({ variant: 'signOut' })}
             >
               {t('auth.signOut')}
             </button>
@@ -59,13 +56,13 @@ export default function Header() {
             <>
               <Link
                 href="/sign-in"
-                className={`${LINK_BASE_CLASS} text-slate bg-mint hover:shadow-slate`}
+                className={buttonVariants({ variant: 'navLink' })}
               >
                 {t('auth.signIn')}
               </Link>
               <Link
                 href="/sign-up"
-                className={`${LINK_BASE_CLASS} text-slate bg-mint hover:shadow-slate`}
+                className={buttonVariants({ variant: 'navLink' })}
               >
                 {t('auth.signUp')}
               </Link>
@@ -78,15 +75,11 @@ export default function Header() {
           onClick={() => setMenuOpen((prev) => !prev)}
         >
           {menuOpen ? (
-            <span
-              className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
-            >
+            <span className={buttonVariants({ variant: 'navLink' })}>
               {t('nav.close')}
             </span>
           ) : (
-            <span
-              className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
-            >
+            <span className={buttonVariants({ variant: 'navLink' })}>
               {t('nav.open')}
             </span>
           )}
@@ -102,7 +95,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
+                  className={buttonVariants({ variant: 'navLink' })}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -114,7 +107,7 @@ export default function Header() {
                   signOut();
                   setMenuOpen(false);
                 }}
-                className={`${LINK_BASE_CLASS} text-xl text-pearl bg-coral hover:shadow-slate`}
+                className={buttonVariants({ variant: 'navLink' })}
               >
                 {t('auth.signOut')}
               </button>
@@ -122,14 +115,14 @@ export default function Header() {
               <>
                 <Link
                   href="/sign-in"
-                  className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
+                  className={buttonVariants({ variant: 'navLink' })}
                   onClick={() => setMenuOpen(false)}
                 >
                   {t('auth.signIn')}
                 </Link>
                 <Link
                   href="/sign-up"
-                  className={`${LINK_BASE_CLASS} text-xl text-slate bg-mint hover:shadow-slate`}
+                  className={buttonVariants({ variant: 'navLink' })}
                   onClick={() => setMenuOpen(false)}
                 >
                   {t('auth.signUp')}
