@@ -9,7 +9,7 @@ interface AuthState {
   setUser: (user: User | null) => void;
   setSession: (session: Session | null) => void;
   setIsLoading: (isLoading: boolean) => void;
-  initialize: () => () => void;
+  initialize: (initialUser?: User | null) => () => void;
   signOut: () => Promise<void>;
 }
 
@@ -24,8 +24,12 @@ export const useAuthStore = create<AuthState>((set) => ({
   setSession: (session) => set({ session, user: session?.user ?? null }),
   setIsLoading: (isLoading) => set({ isLoading }),
 
-  initialize: () => {
-    set({ isLoading: true });
+  initialize: (initialUser) => {
+    if (initialUser !== undefined) {
+      set({ user: initialUser, isLoading: false });
+    } else {
+      set({ isLoading: true });
+    }
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       set({

@@ -23,9 +23,7 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={handleSwitch}
-      className="
-         flex items-center rounded-xl border-2 border-mint  text-slate text-sm p-1 cursor-pointer transition-colors duration-300  hover:border-sky
-      "
+      className="flex items-center rounded-xl border-2 border-mint text-slate text-sm p-1 cursor-pointer transition-colors duration-300 hover:border-sky"
     >
       <span
         className={`px-2 py-1 rounded-lg uppercase ${locale === 'uk' ? 'bg-sky font-bold text-slate' : 'text-slate'}`}
