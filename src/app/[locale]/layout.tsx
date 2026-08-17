@@ -4,6 +4,7 @@ import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
 import { routing } from '@/i18n/routing';
 import { type Locale } from '@/i18n/request';
 import { AuthProvider } from '@/components/providers/AuthProvider';
@@ -42,6 +43,11 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <html
       lang={locale}
@@ -49,9 +55,9 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col bg-pearl">
         <NextIntlClientProvider messages={messages}>
-          <AuthProvider>
+          <AuthProvider initialUser={user}>
             <Header />
-            <Sidebar  />
+            <Sidebar />
             {children}
           </AuthProvider>
         </NextIntlClientProvider>
