@@ -1,28 +1,29 @@
-"use client";
+'use client';
 
-import { createClient } from "@/lib/supabase/client";
-import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/Button";
+import { createClient } from '@/lib/supabase/client';
+import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/Button';
+
+const supabase = createClient();
 
 interface GoogleAuthButtonProps {
-  variant?: "signIn" | "signUp";
+  variant?: 'signIn' | 'signUp';
 }
 
 export function GoogleAuthButton({
-  variant = "signUp",
+  variant = 'signUp',
 }: GoogleAuthButtonProps) {
-  const tSignUp = useTranslations("signUp.buttons");
-  const tSignIn = useTranslations("signIn.buttons");
+  const tSignUp = useTranslations('signUp.buttons');
+  const tSignIn = useTranslations('signIn.buttons');
 
   const buttonText =
-    variant === "signIn"
-      ? tSignIn("signInWithGoogle")
-      : tSignUp("signUpWithGoogle");
+    variant === 'signIn'
+      ? tSignIn('signInWithGoogle')
+      : tSignUp('signUpWithGoogle');
 
   const handleGoogleAuth = async () => {
-    const supabase = createClient();
     await supabase.auth.signInWithOAuth({
-      provider: "google",
+      provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
