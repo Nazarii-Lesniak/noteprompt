@@ -4,14 +4,12 @@ import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 
-import { createClient } from '@/lib/supabase/client';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { FormField } from './FormField';
 import { SignUpInputs, signUpSchema } from '../schemas/auth.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-const supabase = createClient();
+import { signUp } from '../api/signUp';
 
 export function SignUpForm() {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -28,34 +26,15 @@ export function SignUpForm() {
   });
 
   const onSubmit: SubmitHandler<SignUpInputs> = async (data) => {
-    const { data: authData, error } = await supabase.auth.signUp({
-      email: data.email,
-      password: data.password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/sign-in`,
-        data: {
-          name: data.name,
-        },
-      },
-    });
+    const result = await signUp(data);
 
-    if (error) {
-      const isEmailExists =
-        error.message.toLowerCase().includes('already') || error.status === 422;
-
+    if (!result.success) {
       setError('email', {
         type: 'server',
-        message: isEmailExists ? t('errors.emailAlreadyExists') : error.message,
-      });
-      return;
-    }
-
-    const userIdentities = authData?.user?.identities;
-
-    if (userIdentities && userIdentities.length === 0) {
-      setError('email', {
-        type: 'manual',
-        message: t('errors.emailAlreadyExists'),
+        message:
+          result.code === 'email_already_exists'
+            ? t('errors.emailAlreadyExists')
+            : result.message,
       });
       return;
     }

@@ -56,7 +56,8 @@
       "emailAlreadyExists": "Цей Email вже зайнятий.",
       "passwordRequired": "Введіть пароль",
       "passwordTooShort": "Пароль має містити щонайменше 8 символів",
-      "passwordsDoNotMatch": "Паролі не збігаються"
+      "passwordsDoNotMatch": "Паролі не збігаються",
+      "oauthFailed": "Виникла помилка. Будь ласка, спробуйте ще раз."
     },
     "footer": {
       "or": "АБО",

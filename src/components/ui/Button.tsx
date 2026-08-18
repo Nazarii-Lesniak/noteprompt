@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 import { buttonVariants } from './buttons.variants';
 
 interface ButtonProps extends ComponentProps<'button'> {
-  variant?: 'submit' | 'signupWithGoogle';
+  variant?: 'submit' | 'signUpWithGoogle' | 'signInWithGoogle';
 }
 
 export function Button({

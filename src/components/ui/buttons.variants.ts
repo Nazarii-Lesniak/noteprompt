@@ -6,7 +6,8 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         submit: 'text-slate bg-mint hover:shadow-slate',
-        signupWithGoogle: 'text-pearl bg-coral hover:shadow-slate',
+        signUpWithGoogle: 'text-pearl bg-coral hover:shadow-slate',
+        signInWithGoogle: 'text-pearl bg-coral hover:shadow-slate',
         navLink: 'text-slate bg-mint hover:shadow-slate',
         signOut: 'text-pearl bg-coral hover:shadow-slate',
       },

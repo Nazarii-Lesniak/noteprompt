@@ -56,7 +56,8 @@
       "emailAlreadyExists": "This email is already taken.",
       "passwordRequired": "Enter a password",
       "passwordTooShort": "Password must be at least 8 characters long",
-      "passwordsDoNotMatch": "Passwords do not match"
+      "passwordsDoNotMatch": "Passwords do not match",
+      "oauthFailed": "Something went wrong. Please try again."
     },
     "footer": {
       "or": "OR",
