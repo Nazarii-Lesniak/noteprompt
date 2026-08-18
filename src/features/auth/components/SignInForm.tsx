@@ -4,14 +4,12 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/routing';
 
-import { createClient } from '@/lib/supabase/client';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { FormField } from './FormField';
 import { SignInInputs, signInSchema } from '../schemas/auth.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-const supabase = createClient();
+import { signIn } from '../api/signIn';
 
 export function SignInForm() {
   const t = useTranslations('signIn');
@@ -28,12 +26,9 @@ export function SignInForm() {
   });
 
   const onSubmit: SubmitHandler<SignInInputs> = async (data) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
-    });
+    const result = await signIn(data);
 
-    if (error) {
+    if (!result.success) {
       setError('email', {
         type: 'server',
         message: t('errors.invalidCredentials'),

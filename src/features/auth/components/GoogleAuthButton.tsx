@@ -1,10 +1,9 @@
 'use client';
 
-import { createClient } from '@/lib/supabase/client';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/Button';
-
-const supabase = createClient();
+import { useState } from 'react';
+import { signInWithGoogle } from '../api/signInWithGoogle';
 
 interface GoogleAuthButtonProps {
   variant?: 'signIn' | 'signUp';
@@ -13,25 +12,33 @@ interface GoogleAuthButtonProps {
 export function GoogleAuthButton({
   variant = 'signUp',
 }: GoogleAuthButtonProps) {
-  const tSignUp = useTranslations('signUp.buttons');
-  const tSignIn = useTranslations('signIn.buttons');
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const tButton = useTranslations(`${variant}.buttons`);
+  const tError = useTranslations(`${variant}.errors`);
 
-  const buttonText =
-    variant === 'signIn'
-      ? tSignIn('signInWithGoogle')
-      : tSignUp('signUpWithGoogle');
+  const buttonText = tButton(`${variant}WithGoogle`);
 
   const handleGoogleAuth = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
+    setError(null);
+    setIsLoading(true);
+
+    const result = await signInWithGoogle();
+
+    if (!result.success) {
+      setError(tError(result.code || 'unknown'));
+    }
+    setError(tError('unknown'));
+    setIsLoading(false);
   };
 
   return (
-    <Button type="button" variant="signupWithGoogle" onClick={handleGoogleAuth}>
+    <Button
+      type="button"
+      variant={`${variant}WithGoogle`}
+      onClick={handleGoogleAuth}
+      disabled={isLoading}
+    >
       {buttonText}
     </Button>
   );
