@@ -6,7 +6,7 @@ import { Link, useRouter } from '@/i18n/routing';
 
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
-import { FormField } from './FormField';
+import { FormField } from '../../../components/ui/FormField';
 import { SignInInputs, signInSchema } from '../schemas/auth.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from '../api/signIn';

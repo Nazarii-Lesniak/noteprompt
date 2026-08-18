@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
-import { FormField } from './FormField';
+import { FormField } from '../../../components/ui/FormField';
 import { SignUpInputs, signUpSchema } from '../schemas/auth.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signUp } from '../api/signUp';
