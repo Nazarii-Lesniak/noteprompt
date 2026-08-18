@@ -28,18 +28,21 @@ export function GoogleAuthButton({
     if (!result.success) {
       setError(tError(result.code || 'unknown'));
     }
-    setError(tError('unknown'));
+
     setIsLoading(false);
   };
 
   return (
-    <Button
-      type="button"
-      variant={`${variant}WithGoogle`}
-      onClick={handleGoogleAuth}
-      disabled={isLoading}
-    >
-      {buttonText}
-    </Button>
+    <>
+      <Button
+        type="button"
+        variant={`${variant}WithGoogle`}
+        onClick={handleGoogleAuth}
+        disabled={isLoading}
+      >
+        {buttonText}
+      </Button>
+      {error && <p className="text-sm text-coral pt-1">{error}</p>}
+    </>
   );
 }
