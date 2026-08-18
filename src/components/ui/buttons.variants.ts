@@ -14,9 +14,9 @@ export const buttonVariants = cva(
       fullWidth: {
         true: 'w-full',
       },
-      defaultVariants: {
-        variant: 'submit',
-      },
+    },
+    defaultVariants: {
+      variant: 'submit',
     },
   },
 );
