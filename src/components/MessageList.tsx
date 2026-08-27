@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { useChatStore } from '@/store/useChatStore';
 import { useTranslations } from 'next-intl';
+import Markdown from 'react-markdown';
 import { mockMessages } from '@/mocks/mock.chat';
 
 export default function MessageList() {
@@ -35,7 +36,7 @@ export default function MessageList() {
           </p>
         </div>
       ) : (
-        mockMessages.map((message, index) => {
+        messages.map((message, index) => {
           const isUser = message.role === 'user';
           const isLastMessage = index === messages.length - 1;
           const isGeneratingThis = isLastMessage && isStreaming && !isUser;
@@ -47,7 +48,6 @@ export default function MessageList() {
                 isUser ? 'ml-auto flex-row-reverse' : 'mr-auto flex-row'
               }`}
             >
-              {/* Avatar */}
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs ${
                   isUser
@@ -62,13 +62,12 @@ export default function MessageList() {
                 )}
               </div>
 
-              {/* Message */}
               <div
-                className={`px-4 py-3 rounded-2xl text-sm md:text-base  text-slate rounded-bl-xs border border-mint ${
+                className={`px-4 py-3 rounded-2xl text-sm md:text-base  text-slate rounded-bl-xs border border-mint whitespace-pre-wrap wrap-break-word ${
                   isUser ? 'bg-mint' : 'bg-white/70'
                 }`}
               >
-                {message.content}
+                <Markdown>{message.content}</Markdown>
                 {isGeneratingThis && (
                   <span className="inline-block w-1.5 h-4 ml-1.5 align-middle bg-slate/70 animate-pulse" />
                 )}
@@ -78,7 +77,6 @@ export default function MessageList() {
         })
       )}
 
-      {/* Typing */}
       {isStreaming &&
         messages.length > 0 &&
         messages.at(-1)?.role === 'user' && (
