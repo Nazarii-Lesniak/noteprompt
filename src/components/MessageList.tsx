@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useChatStore } from '@/store/useChatStore';
 import { useTranslations } from 'next-intl';
 import Markdown from 'react-markdown';
-import { mockMessages } from '@/mocks/mock.chat';
+
+import { useChatStore } from '@/store/useChatStore';
 
 export default function MessageList() {
   const { messages, isStreaming } = useChatStore();

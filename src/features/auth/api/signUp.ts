@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/client';
+
 import { AuthResult, normalizedSignUpError } from './authErrors';
 
 const supabase = createClient();

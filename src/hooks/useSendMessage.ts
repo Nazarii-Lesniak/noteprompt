@@ -1,10 +1,11 @@
 'use client';
 
 import { useCallback } from 'react';
-import { useChatStore } from '@/store/useChatStore';
-import { createClient } from '@/lib/supabase/client';
-import { Message } from '@/types/chat';
 import { useTranslations } from 'next-intl';
+
+import { createClient } from '@/lib/supabase/client';
+import { useChatStore } from '@/store/useChatStore';
+import { type Message } from '@/types/chat';
 
 export function useSendMessage() {
   const t = useTranslations('chat.errors');
@@ -151,14 +152,7 @@ export function useSendMessage() {
         setIsStreaming(false);
       }
     },
-    [
-      isStreaming,
-      addMessage,
-      setIsStreaming,
-      supabase,
-      appendToLastMessage,
-      t,
-    ],
+    [isStreaming, addMessage, setIsStreaming, supabase, appendToLastMessage, t],
   );
 
   return {

@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
-import { routing } from '@/i18n/routing';
-import { type Locale } from '@/i18n/request';
-import { AuthProvider } from '@/components/providers/AuthProvider';
+
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
+import { AuthProvider } from '@/components/providers/AuthProvider';
+import { type Locale } from '@/i18n/request';
+import { routing } from '@/i18n/routing';
+import { createClient } from '@/lib/supabase/server';
+
+import '../globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

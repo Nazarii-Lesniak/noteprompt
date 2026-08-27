@@ -1,8 +1,9 @@
-import { Separator } from '@/components/ui/Separator';
-import { GoogleAuthButton } from '@/features/auth/components/GoogleAuthButton';
-import { AuthRedirect } from '@/features/auth/components/AuthRedirect';
-import { SignInForm } from '@/features/auth/components/SignInForm';
 import { getTranslations } from 'next-intl/server';
+
+import { AuthRedirect } from '@/features/auth/components/AuthRedirect';
+import { GoogleAuthButton } from '@/features/auth/components/GoogleAuthButton';
+import { SignInForm } from '@/features/auth/components/SignInForm';
+import { Separator } from '@/components/ui/Separator';
 
 export default async function SignInPage() {
   const t = await getTranslations('signIn');

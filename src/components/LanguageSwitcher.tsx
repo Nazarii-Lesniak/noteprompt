@@ -1,7 +1,8 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from '@/i18n/routing';
+
+import { usePathname, useRouter } from '@/i18n/routing';
 import { type Locale } from '@/i18n/request';
 
 const LOCALE_LABELS = {

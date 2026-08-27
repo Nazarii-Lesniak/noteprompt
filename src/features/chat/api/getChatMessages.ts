@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/client';
-import { Message } from '@/types/chat';
+import { type Message } from '@/types/chat';
 
 export async function getChatMessages(chatId: string): Promise<Message[]> {
   const supabase = createClient();

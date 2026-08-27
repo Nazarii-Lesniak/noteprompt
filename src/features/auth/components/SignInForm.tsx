@@ -1,15 +1,18 @@
 'use client';
 
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
-import { Link, useRouter } from '@/i18n/routing';
-
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
-import { FormField } from '../../../components/ui/FormField';
-import { SignInInputs, signInSchema } from '../schemas/auth.schema';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signIn } from '../api/signIn';
+
+import { Link, useRouter } from '@/i18n/routing';
+import { Button } from '@/components/ui/Button';
+import { FormField } from '@/components/ui/FormField';
+import { Input } from '@/components/ui/Input';
+import { signIn } from '@/features/auth/api/signIn';
+import {
+  SignInInputs,
+  signInSchema,
+} from '@/features/auth/schemas/auth.schema';
 
 export function SignInForm() {
   const t = useTranslations('signIn');

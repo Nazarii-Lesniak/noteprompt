@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
-
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
-import { FormField } from '../../../components/ui/FormField';
-import { SignUpInputs, signUpSchema } from '../schemas/auth.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+
+import { Button } from '@/components/ui/Button';
+import { FormField } from '@/components/ui/FormField';
+import { Input } from '@/components/ui/Input';
+
 import { signUp } from '../api/signUp';
+import { SignUpInputs, signUpSchema } from '../schemas/auth.schema';
 
 export function SignUpForm() {
   const [isSuccess, setIsSuccess] = useState(false);
