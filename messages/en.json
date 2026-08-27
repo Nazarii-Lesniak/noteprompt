@@ -104,6 +104,9 @@
     "emptyTitle": "How can I help you today?",
     "emptyDescription": "Enter a message or choose a template from the quick prompts in the sidebar.",
     "inputPlaceholder": "Type a message... (Enter to send, Shift+Enter for new line)",
-    "send": "Send"
+    "send": "Send",
+    "errors": {
+      "errorResponse": "\n\n Error getting response. Please check your connection and try again."
+    }
   }
 }

@@ -8,7 +8,7 @@ import {
   ChangeEvent,
   FormEvent,
 } from 'react';
-import { useChatStore } from '@/store/useChatStore';
+import { useSendMessage } from '@/hooks/useSendMessage';
 import { useTranslations } from 'next-intl';
 
 export interface ChatInputProps {
@@ -24,7 +24,7 @@ export default function ChatInput({
 }: ChatInputProps) {
   const [value, setValue] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const { isStreaming, addMessage } = useChatStore();
+  const { sendMessage, isStreaming } = useSendMessage();
   const t = useTranslations('chat');
 
   const isInputDisabled = disabled || isStreaming;
@@ -52,11 +52,7 @@ export default function ChatInput({
     if (onSend) {
       onSend(trimmed);
     } else {
-      addMessage({
-        role: 'user',
-        content: trimmed,
-        created_at: new Date().toISOString(),
-      });
+      sendMessage(trimmed);
     }
 
     setValue('');
