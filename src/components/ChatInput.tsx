@@ -8,8 +8,9 @@ import {
   ChangeEvent,
   FormEvent,
 } from 'react';
-import { useSendMessage } from '@/hooks/useSendMessage';
 import { useTranslations } from 'next-intl';
+
+import { useSendMessage } from '@/hooks/useSendMessage';
 
 export interface ChatInputProps {
   onSend?: (content: string) => void;

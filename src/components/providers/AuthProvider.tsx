@@ -1,6 +1,7 @@
 'use client';
 
 import { type ReactNode, useLayoutEffect } from 'react';
+
 import { useAuthStore } from '@/store/useAuthStore';
 import { User } from '@supabase/supabase-js';
 
@@ -16,7 +17,7 @@ export function AuthProvider({ children, initialUser }: AuthProviderProps) {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [initialUser]);
 
   return <>{children}</>;
 }

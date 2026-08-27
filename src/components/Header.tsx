@@ -1,13 +1,15 @@
 'use client';
 
-import { Link, useRouter } from '@/i18n/routing';
 import { useState } from 'react';
-import { useLayoutStore } from '@/store/useLayoutStore';
-import { useAuthStore } from '@/store/useAuthStore';
 import { useTranslations } from 'next-intl';
+
+import { Link, useRouter } from '@/i18n/routing';
+import { useAuthStore } from '@/store/useAuthStore';
+import { useLayoutStore } from '@/store/useLayoutStore';
+
 import LanguageSwitcher from './LanguageSwitcher';
-import { LinkButton } from './ui/LinkButton';
 import { buttonVariants } from './ui/buttons.variants';
+import { LinkButton } from './ui/LinkButton';
 
 export default function Header() {
   const router = useRouter();
