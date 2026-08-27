@@ -101,6 +101,7 @@
     "edit": "Edit"
   },
   "chat": {
+    "newChat": "New chat",
     "emptyTitle": "How can I help you today?",
     "emptyDescription": "Enter a message or choose a template from the quick prompts in the sidebar.",
     "inputPlaceholder": "Type a message... (Enter to send, Shift+Enter for new line)",

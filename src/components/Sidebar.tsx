@@ -2,20 +2,53 @@
 
 import { useLayoutStore } from '@/store/useLayoutStore';
 import { useAuthStore } from '@/store/useAuthStore';
+import { useChatStore } from '@/store/useChatStore';
 import { useState } from 'react';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 import { useTranslations } from 'next-intl';
+import { createChat } from '@/features/chat/api/createChat';
 
 export default function Sidebar() {
   const { isSidebarOpen, toggleSidebar } = useLayoutStore();
   const user = useAuthStore((state) => state.user);
+  const {
+    chats,
+    chatId: currentChatId,
+    setChatId,
+    addChat,
+    reset: resetChat,
+    setChat,
+    isStreaming,
+  } = useChatStore();
   const [search, setSearch] = useState('');
+  const [isCreating, setIsCreating] = useState(false);
   const t = useTranslations('sidebar');
 
   if (!user) {
     return null;
   }
+
+  const handleNewChat = async () => {
+    if (isCreating || isStreaming) return;
+    try {
+      setIsCreating(true);
+      const newChat = await createChat(t('buttons.newChat'));
+      if (newChat) {
+        resetChat();
+        setChatId(newChat.id);
+        addChat(newChat);
+      }
+    } catch (error) {
+      console.error('Failed to create new chat:', error);
+    } finally {
+      setIsCreating(false);
+    }
+  };
+
+  const filteredChats = chats.filter((chat) =>
+    chat.title.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <aside
@@ -30,7 +63,9 @@ export default function Sidebar() {
         >
           ✕
         </button>
-        <Button>{t('buttons.newChat')}</Button>
+        <Button onClick={handleNewChat} disabled={isCreating || isStreaming}>
+          {isCreating ? '...' : t('buttons.newChat')}
+        </Button>
         <Input
           type="text"
           placeholder={t('inputs.placeholder')}
@@ -40,6 +75,23 @@ export default function Sidebar() {
         <label className="text-slate">{t('labels.quickPrompts')}</label>
         <hr />
         <label className="text-slate">{t('labels.chatHistory')}</label>
+        <div className="flex flex-col gap-1 overflow-y-auto flex-1">
+          {filteredChats.map((chat) => (
+            <button
+              key={chat.id}
+              onClick={() => {
+                setChat(chat.id, []);
+              }}
+              className={`text-left px-3 py-2 rounded-xl truncate text-sm transition-colors cursor-pointer ${
+                currentChatId === chat.id
+                  ? 'bg-sky text-slate font-medium'
+                  : 'text-slate hover:bg-sky/50'
+              }`}
+            >
+              {chat.title}
+            </button>
+          ))}
+        </div>
       </div>
     </aside>
   );
