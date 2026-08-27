@@ -44,6 +44,20 @@ export function useSendMessage() {
         content: msg.content,
       }));
 
+      let accumulatedAssistantText = '';
+      const currentChatId = useChatStore.getState().chatId;
+
+      if (currentChatId) {
+        supabase
+          .from('messages')
+          .insert({
+            chat_id: currentChatId,
+            role: 'user',
+            content: trimmedContent,
+          })
+          .then();
+      }
+
       try {
         const {
           data: { session },
@@ -113,10 +127,22 @@ export function useSendMessage() {
               const text = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
 
               if (text) {
+                accumulatedAssistantText += text;
                 appendToLastMessage(text);
               }
             } catch {}
           }
+        }
+
+        if (currentChatId && accumulatedAssistantText) {
+          supabase
+            .from('messages')
+            .insert({
+              chat_id: currentChatId,
+              role: 'assistant',
+              content: accumulatedAssistantText,
+            })
+            .then();
         }
       } catch (error) {
         console.error('Error in useSendMessage:', error);
@@ -129,7 +155,7 @@ export function useSendMessage() {
       isStreaming,
       addMessage,
       setIsStreaming,
-      supabase.auth,
+      supabase,
       appendToLastMessage,
       t,
     ],

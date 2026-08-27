@@ -18,7 +18,10 @@
     },
     "labels": {
       "quickPrompts": "Quick prompts",
-      "chatHistory": "Chat history"
+      "chatHistory": "Chat history",
+      "noChats": "No chats yet",
+      "noResults": "No results found",
+      "loading": "Loading..."
     }
   },
   "auth": {
