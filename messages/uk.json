@@ -18,7 +18,10 @@
     },
     "labels": {
       "quickPrompts": "Швидкі промпти",
-      "chatHistory": "Історія чатів"
+      "chatHistory": "Історія чатів",
+      "noChats": "Немає чатів",
+      "noResults": "Нічого не знайдено",
+      "loading": "Завантаження..."
     }
   },
   "auth": {
