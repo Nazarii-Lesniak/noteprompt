@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { useState } from 'react';
 import { useLayoutStore } from '@/store/useLayoutStore';
 import { useAuthStore } from '@/store/useAuthStore';
@@ -10,6 +10,7 @@ import { LinkButton } from './ui/LinkButton';
 import { buttonVariants } from './ui/buttons.variants';
 
 export default function Header() {
+  const router = useRouter();
   const toggleSidebar = useLayoutStore((store) => store.toggleSidebar);
   const user = useAuthStore((store) => store.user);
   const signOut = useAuthStore((store) => store.signOut);
@@ -17,15 +18,25 @@ export default function Header() {
   const t = useTranslations();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleSignOut = async () => {
+    await signOut();
+    router.push('/sign-in');
+    router.refresh();
+  };
+
   const navLinks = [
     { href: '/prompts', label: t('nav.prompts') },
     { href: '/settings', label: t('nav.settings') },
   ];
 
   return (
-    <header className="relative border-b-4 border-sky rounded-full shadow-sm mt-1">
+    <header className="sticky border-b-4 border-sky rounded-full shadow-sm mt-1">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <LinkButton href="/" variant="navLink" onClick={toggleSidebar}>
+        <LinkButton
+          href={user ? '/' : '/sign-in'}
+          variant="navLink"
+          onClick={user ? toggleSidebar : undefined}
+        >
           NotePrompt
         </LinkButton>
 
@@ -47,7 +58,7 @@ export default function Header() {
           <LanguageSwitcher />
           {user ? (
             <button
-              onClick={signOut}
+              onClick={handleSignOut}
               className={buttonVariants({ variant: 'signOut' })}
             >
               {t('auth.signOut')}
@@ -87,7 +98,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="absolute top-[calc(100%+0.5rem)] w-[50dvw] right-10 md:hidden bg-pearl rounded-2xl shadow-lg border border-sky p-4 border-b-4">
+        <div className="top-[calc(100%+0.5rem)] w-[50dvw] right-10 md:hidden bg-pearl rounded-2xl shadow-lg border border-sky p-4 border-b-4">
           <nav className="flex flex-col items-center px-4 pt-2 pb-3 space-y-2">
             <LanguageSwitcher />
             {user &&
@@ -104,8 +115,8 @@ export default function Header() {
             {user ? (
               <button
                 onClick={() => {
-                  signOut();
                   setMenuOpen(false);
+                  handleSignOut();
                 }}
                 className={buttonVariants({ variant: 'navLink' })}
               >

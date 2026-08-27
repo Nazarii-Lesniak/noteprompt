@@ -92,10 +92,9 @@ export default function ChatInput({
           type="submit"
           disabled={!canSubmit}
           aria-label={t('send')}
-          title={isStreaming ? 'Генерація відповіді...' : t('send')}
           className="py-3 px-5 rounded-xl bg-mint text-slate cursor-pointer"
         >
-          <span className="w-5 h-5 text-slate font-bold">Send</span>
+          <span className="w-5 h-5 text-slate font-bold">{t('send')}</span>
         </button>
       </div>
     </form>

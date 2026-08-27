@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import createMiddleware from "next-intl/middleware";
-import { createServerClient } from "@supabase/ssr";
-import { routing } from "./i18n/routing";
+import { NextRequest, NextResponse } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
+import { createServerClient } from '@supabase/ssr';
+import { routing } from './i18n/routing';
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -31,23 +31,24 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const pathname = request.nextUrl.pathname;
-  const pathnameSegments = pathname.split("/").filter(Boolean);
+  const pathnameSegments = pathname.split('/').filter(Boolean);
   const hasLocale = routing.locales.includes(
-    pathnameSegments.at(0) as "uk" | "en",
+    pathnameSegments.at(0) as 'uk' | 'en',
   );
   const locale = hasLocale ? pathnameSegments.at(0) : routing.defaultLocale;
   const pathnameWithoutLocale = hasLocale
-    ? "/" + pathnameSegments.slice(1).join("/")
+    ? '/' + pathnameSegments.slice(1).join('/')
     : pathname;
 
   const isPrivateRoute =
-    pathnameWithoutLocale === "/" ||
-    pathnameWithoutLocale.startsWith("/prompts") ||
-    pathnameWithoutLocale.startsWith("/settings");
+    pathnameWithoutLocale === '/' ||
+    pathnameWithoutLocale.startsWith('/prompts') ||
+    pathnameWithoutLocale.startsWith('/settings');
 
   const isAuthRoute =
-    pathnameWithoutLocale === "/sign-in" ||
-    pathnameWithoutLocale === "/sign-up";
+    pathnameWithoutLocale === '/sign-in' ||
+    pathnameWithoutLocale === '/sign-up' ||
+    pathnameWithoutLocale === '/forgot-password';
 
   if (!user && isPrivateRoute) {
     const redirectUrl = new URL(`/${locale}/sign-in`, request.url);
@@ -71,5 +72,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(uk|en)/:path*"],
+  matcher: ['/((?!api|auth|_next/static|_next/image|favicon.ico|.*\\..*).*)'],
 };

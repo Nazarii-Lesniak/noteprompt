@@ -1,13 +1,11 @@
-import { getTranslations } from 'next-intl/server';
+import MessageList from '@/components/MessageList';
+import ChatInput from '@/components/ChatInput';
 
-export default async function Home() {
-  const t = await getTranslations('nav');
+export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-8 p-6 text-center">
-      <h1 className="max-w-md text-3xl font-bold text-slate">
-        {t('home.title')}
-      </h1>
-      <p className="max-w-sm text-slate">{t('home.description')}</p>
+    <main className="flex flex-1 flex-col overflow-hidden">
+      <MessageList />
+      <ChatInput />
     </main>
   );
 }

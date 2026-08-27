@@ -1,6 +1,7 @@
 'use client';
 
 import { useLayoutStore } from '@/store/useLayoutStore';
+import { useAuthStore } from '@/store/useAuthStore';
 import { useState } from 'react';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
@@ -8,8 +9,13 @@ import { useTranslations } from 'next-intl';
 
 export default function Sidebar() {
   const { isSidebarOpen, toggleSidebar } = useLayoutStore();
+  const user = useAuthStore((state) => state.user);
   const [search, setSearch] = useState('');
   const t = useTranslations('sidebar');
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <aside
