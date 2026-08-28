@@ -98,7 +98,7 @@ export function SignUpForm() {
       </FormField>
 
       <div>
-        <Button type="submit" variant="submit" disabled={isSubmitting}>
+        <Button type="submit" variant="primary" disabled={isSubmitting}>
           {isSubmitting ? t('buttons.submitting') : t('buttons.submit')}
         </Button>
       </div>
