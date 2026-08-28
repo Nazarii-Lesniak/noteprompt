@@ -45,7 +45,7 @@ export function SignUpForm() {
 
   if (isSuccess) {
     return (
-      <div className="text-center p-4 bg-green-50 text-slate rounded-md">
+      <div className="text-center p-4 bg-sky text-slate rounded-md">
         <p>{t('success.ok')}</p>
       </div>
     );
