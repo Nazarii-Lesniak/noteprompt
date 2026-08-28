@@ -38,7 +38,7 @@ export function GoogleAuthButton({
     <>
       <Button
         type="button"
-        variant={`${variant}WithGoogle`}
+        variant="accent"
         onClick={handleGoogleAuth}
         disabled={isLoading}
       >

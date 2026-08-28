@@ -10,6 +10,7 @@ import { useLayoutStore } from '@/store/useLayoutStore';
 import LanguageSwitcher from './LanguageSwitcher';
 import { buttonVariants } from './ui/buttons.variants';
 import { LinkButton } from './ui/LinkButton';
+import { Button } from './ui/Button';
 
 export default function Header() {
   const router = useRouter();
@@ -36,7 +37,7 @@ export default function Header() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <LinkButton
           href={user ? '/' : '/sign-in'}
-          variant="navLink"
+          variant="primary"
           onClick={user ? toggleSidebar : undefined}
         >
           NotePrompt
@@ -48,7 +49,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={buttonVariants({ variant: 'navLink' })}
+                className={buttonVariants({ variant: 'primary' })}
               >
                 {link.label}
               </Link>
@@ -59,23 +60,20 @@ export default function Header() {
         <div className="hidden md:flex items-center space-x-2">
           <LanguageSwitcher />
           {user ? (
-            <button
-              onClick={handleSignOut}
-              className={buttonVariants({ variant: 'signOut' })}
-            >
+            <Button onClick={handleSignOut} variant="accent">
               {t('auth.signOut')}
-            </button>
+            </Button>
           ) : (
             <>
               <Link
                 href="/sign-in"
-                className={buttonVariants({ variant: 'navLink' })}
+                className={buttonVariants({ variant: 'primary' })}
               >
                 {t('auth.signIn')}
               </Link>
               <Link
                 href="/sign-up"
-                className={buttonVariants({ variant: 'navLink' })}
+                className={buttonVariants({ variant: 'primary' })}
               >
                 {t('auth.signUp')}
               </Link>
@@ -88,11 +86,11 @@ export default function Header() {
           onClick={() => setMenuOpen((prev) => !prev)}
         >
           {menuOpen ? (
-            <span className={buttonVariants({ variant: 'navLink' })}>
+            <span className={buttonVariants({ variant: 'primary' })}>
               {t('nav.close')}
             </span>
           ) : (
-            <span className={buttonVariants({ variant: 'navLink' })}>
+            <span className={buttonVariants({ variant: 'primary' })}>
               {t('nav.open')}
             </span>
           )}
@@ -108,7 +106,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={buttonVariants({ variant: 'navLink' })}
+                  className={buttonVariants({ variant: 'primary' })}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -120,7 +118,7 @@ export default function Header() {
                   setMenuOpen(false);
                   handleSignOut();
                 }}
-                className={buttonVariants({ variant: 'navLink' })}
+                className={buttonVariants({ variant: 'primary' })}
               >
                 {t('auth.signOut')}
               </button>
@@ -128,14 +126,14 @@ export default function Header() {
               <>
                 <Link
                   href="/sign-in"
-                  className={buttonVariants({ variant: 'navLink' })}
+                  className={buttonVariants({ variant: 'primary' })}
                   onClick={() => setMenuOpen(false)}
                 >
                   {t('auth.signIn')}
                 </Link>
                 <Link
                   href="/sign-up"
-                  className={buttonVariants({ variant: 'navLink' })}
+                  className={buttonVariants({ variant: 'primary' })}
                   onClick={() => setMenuOpen(false)}
                 >
                   {t('auth.signUp')}

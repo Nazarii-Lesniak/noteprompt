@@ -5,18 +5,15 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        submit: 'text-slate bg-mint hover:shadow-slate',
-        signUpWithGoogle: 'text-pearl bg-coral hover:shadow-slate',
-        signInWithGoogle: 'text-pearl bg-coral hover:shadow-slate',
-        navLink: 'text-slate bg-mint hover:shadow-slate',
-        signOut: 'text-pearl bg-coral hover:shadow-slate',
+        primary: 'text-slate bg-mint hover:shadow-slate',
+        accent: 'text-pearl bg-coral hover:shadow-slate',
       },
       fullWidth: {
         true: 'w-full',
       },
     },
     defaultVariants: {
-      variant: 'submit',
+      variant: 'primary',
     },
   },
 );
