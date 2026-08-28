@@ -33,7 +33,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky border-b-4 border-sky rounded-full shadow-sm mt-1">
+    <header className="sticky top-0 z-50 border-b-4 border-sky rounded-b-3xl shadow-sm mt-1 bg-pearl/80 backdrop-blur-xs">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <LinkButton
           href={user ? '/' : '/sign-in'}
@@ -82,7 +82,7 @@ export default function Header() {
         </div>
 
         <button
-          className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-200 focus:outline-none"
+          className="md:hidden"
           onClick={() => setMenuOpen((prev) => !prev)}
         >
           {menuOpen ? (
@@ -97,52 +97,56 @@ export default function Header() {
         </button>
       </div>
 
-      {menuOpen && (
-        <div className="top-[calc(100%+0.5rem)] w-[50dvw] right-10 md:hidden bg-pearl rounded-2xl shadow-lg border border-sky p-4 border-b-4">
-          <nav className="flex flex-col items-center px-4 pt-2 pb-3 space-y-2">
-            <LanguageSwitcher />
-            {user &&
-              navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={buttonVariants({ variant: 'primary' })}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            {user ? (
-              <button
-                onClick={() => {
-                  setMenuOpen(false);
-                  handleSignOut();
-                }}
+      <div
+        className={`md:hidden absolute right-0 bg-pearl rounded-2xl border border-sky p-4 border-b-4 shadow-lg transition-transform duration-300 ease-in-out ${
+          menuOpen
+            ? 'translate-y-0 opacity-100 pointer-events-auto'
+            : '-translate-y-4 opacity-0 pointer-events-none'
+        }`}
+      >
+        <nav className="flex flex-col items-center px-4 pt-2 pb-3 space-y-2">
+          <LanguageSwitcher />
+          {user &&
+            navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
                 className={buttonVariants({ variant: 'primary' })}
+                onClick={() => setMenuOpen(false)}
               >
-                {t('auth.signOut')}
-              </button>
-            ) : (
-              <>
-                <Link
-                  href="/sign-in"
-                  className={buttonVariants({ variant: 'primary' })}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t('auth.signIn')}
-                </Link>
-                <Link
-                  href="/sign-up"
-                  className={buttonVariants({ variant: 'primary' })}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t('auth.signUp')}
-                </Link>
-              </>
-            )}
-          </nav>
-        </div>
-      )}
+                {link.label}
+              </Link>
+            ))}
+          {user ? (
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                handleSignOut();
+              }}
+              className={buttonVariants({ variant: 'accent' })}
+            >
+              {t('auth.signOut')}
+            </button>
+          ) : (
+            <>
+              <Link
+                href="/sign-in"
+                className={buttonVariants({ variant: 'primary' })}
+                onClick={() => setMenuOpen(false)}
+              >
+                {t('auth.signIn')}
+              </Link>
+              <Link
+                href="/sign-up"
+                className={buttonVariants({ variant: 'primary' })}
+                onClick={() => setMenuOpen(false)}
+              >
+                {t('auth.signUp')}
+              </Link>
+            </>
+          )}
+        </nav>
+      </div>
     </header>
   );
 }
