@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import Markdown from 'react-markdown';
 
-import { useChatStore } from '@/store/useChatStore';
+import { useChatStore } from '@/features/chat/store/useChatStore';
 
 export default function MessageList() {
   const { messages, isStreaming } = useChatStore();

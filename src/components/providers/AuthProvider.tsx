@@ -2,7 +2,7 @@
 
 import { type ReactNode, useLayoutEffect } from 'react';
 
-import { useAuthStore } from '@/store/useAuthStore';
+import { useAuthStore } from '@/features/auth/store/useAuthStore';
 import { User } from '@supabase/supabase-js';
 
 interface AuthProviderProps {

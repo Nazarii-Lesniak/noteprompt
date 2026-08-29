@@ -6,12 +6,12 @@ import { useTranslations } from 'next-intl';
 import { createChat } from '@/features/chat/api/createChat';
 import { getChatMessages } from '@/features/chat/api/getChatMessages';
 import { getChats } from '@/features/chat/api/getChats';
-import { useAuthStore } from '@/store/useAuthStore';
-import { useChatStore } from '@/store/useChatStore';
+import { useAuthStore } from '@/features/auth/store/useAuthStore';
+import { useChatStore } from '@/features/chat/store/useChatStore';
 import { useLayoutStore } from '@/store/useLayoutStore';
 
-import { Button } from './ui/Button';
-import { Input } from './ui/Input';
+import { Button } from '../../../components/ui/Button';
+import { Input } from '../../../components/ui/Input';
 
 export default function Sidebar() {
   const { isSidebarOpen, toggleSidebar } = useLayoutStore();

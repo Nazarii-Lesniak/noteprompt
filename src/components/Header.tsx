@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { Link, useRouter } from '@/i18n/routing';
-import { useAuthStore } from '@/store/useAuthStore';
+import { useAuthStore } from '@/features/auth/store/useAuthStore';
 import { useLayoutStore } from '@/store/useLayoutStore';
 
 import LanguageSwitcher from './LanguageSwitcher';

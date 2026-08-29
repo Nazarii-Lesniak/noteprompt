@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Chat, Message } from '@/types/chat';
+import { Chat, Message } from '@/features/chat/types/chat';
 
 export interface ChatState {
   chatId: string | null;
