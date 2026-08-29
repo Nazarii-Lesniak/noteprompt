@@ -4,8 +4,8 @@ import { useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { createClient } from '@/lib/supabase/client';
-import { useChatStore } from '@/store/useChatStore';
-import { type Message } from '@/types/chat';
+import { useChatStore } from '@/features/chat/store/useChatStore';
+import { type Message } from '@/features/chat/types/chat';
 
 export function useSendMessage() {
   const t = useTranslations('chat.errors');

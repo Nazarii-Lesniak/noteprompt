@@ -3,7 +3,7 @@
 import { useState, useRef, KeyboardEvent, ChangeEvent, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 
-import { useSendMessage } from '@/hooks/useSendMessage';
+import { useSendMessage } from '@/features/chat/hooks/useSendMessage';
 
 export interface ChatInputProps {
   onSend?: (content: string) => void;

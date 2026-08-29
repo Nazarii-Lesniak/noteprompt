@@ -5,7 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/features/chat/components/Sidebar';
 import { AuthProvider } from '@/components/providers/AuthProvider';
 import { type Locale } from '@/i18n/request';
 import { routing } from '@/i18n/routing';
