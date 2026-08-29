@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  useState,
-  useRef,
-  useEffect,
-  KeyboardEvent,
-  ChangeEvent,
-  FormEvent,
-} from 'react';
+import { useState, useRef, KeyboardEvent, ChangeEvent, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { useSendMessage } from '@/hooks/useSendMessage';
@@ -30,19 +23,6 @@ export default function ChatInput({
 
   const isInputDisabled = disabled || isStreaming;
   const canSubmit = value.trim().length > 0 && !isInputDisabled;
-
-  const adjustHeight = () => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = 'auto';
-      const newHeight = Math.min(textarea.scrollHeight, 180);
-      textarea.style.height = `${Math.max(newHeight, 44)}px`;
-    }
-  };
-
-  useEffect(() => {
-    adjustHeight();
-  }, [value]);
 
   const handleSubmit = (e?: FormEvent) => {
     e?.preventDefault();

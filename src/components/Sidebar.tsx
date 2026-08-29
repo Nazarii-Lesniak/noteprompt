@@ -97,7 +97,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`fixed inset-y-0 w-full md:w-72 lg:w-80 left-0 backdrop-blur-xs border-r-4 rounded-3xl border-sky transition-transform duration-300 ease-in-out ${
+      className={`fixed inset-y-0 w-full md:w-72 lg:w-80 left-0 bg-pearl/80 transform-gpu backdrop-blur-xs border-r-4 rounded-3xl border-sky transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >

@@ -10,20 +10,49 @@ export default function MessageList() {
   const { messages, isStreaming } = useChatStore();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isAtBottomRef = useRef<boolean>(true);
   const t = useTranslations('chat');
 
+  const handleScroll = () => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
+    isAtBottomRef.current = scrollHeight - scrollTop - clientHeight < 100;
+  };
+
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const container = containerRef.current;
+    if (!container || !isAtBottomRef.current) {
+      return;
+    }
+
+    if (isStreaming) {
+      container.scrollTop = container.scrollHeight;
+    } else {
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }, [messages, isStreaming]);
+
+  const lastMessage = messages[messages.length - 1];
+  const showTypingIndicator =
+    isStreaming &&
+    (lastMessage?.role === 'user' ||
+      (lastMessage?.role === 'assistant' && !lastMessage.content));
 
   return (
     <div
       ref={containerRef}
-      className={`flex-1 max-w-5xl mx-auto overflow-y-auto p-4 space-y-4`}
+      onScroll={handleScroll}
+      className="flex-1 max-w-4xl w-full mx-auto space-y-4 py-4 md:space-y-10"
     >
       {messages.length === 0 ? (
         <div className="h-full min-h-75 flex flex-col items-center justify-center text-center p-6 text-slate">
-          <div className="w-14 h-14 rounded-2xl bg-mint flex items-center justify-center text-slate">
+          <div className="w-14 h-14 rounded-2xl bg-mint flex items-center justify-center text-slate mb-3">
             <span className="w-7 h-7 text-slate font-bold content-center">
               NP
             </span>
@@ -39,37 +68,42 @@ export default function MessageList() {
         messages.map((message, index) => {
           const isUser = message.role === 'user';
           const isLastMessage = index === messages.length - 1;
-          const isGeneratingThis = isLastMessage && isStreaming && !isUser;
+          const isGeneratingThis =
+            isLastMessage && isStreaming && !isUser && Boolean(message.content);
+
+          if (!isUser && !message.content && isStreaming && isLastMessage) {
+            return null;
+          }
 
           return (
             <div
               key={message.id || index}
-              className={`flex items-end gap-2.5 max-w-[90%] md:max-w-[80%] ${
+              className={`flex items-end gap-4 md:max-w-full transition-opacity duration-200 ${
                 isUser ? 'ml-auto flex-row-reverse' : 'mr-auto flex-row'
               }`}
             >
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs shrink-0 ${
                   isUser
                     ? 'bg-slate text-pearl'
                     : 'bg-mint text-slate border border-sky'
                 }`}
               >
-                {isUser ? (
-                  <span className="flex justify-center font-bold">U</span>
-                ) : (
-                  <span className="w-8 flex justify-center font-bold">B</span>
-                )}
+                <span className="font-bold">{isUser ? 'U' : 'B'}</span>
               </div>
 
               <div
-                className={`px-4 py-3 rounded-2xl text-sm md:text-base  text-slate rounded-bl-xs border border-mint whitespace-pre-wrap wrap-break-word ${
-                  isUser ? 'bg-mint' : 'bg-white/70'
+                className={`px-4 py-3 rounded-2xl text-sm md:text-base text-slate border whitespace-pre-wrap wrap-break-word ${
+                  isUser
+                    ? 'bg-mint border-mint rounded-br-xs'
+                    : 'bg-white/70 border-mint rounded-bl-xs'
                 }`}
               >
-                <Markdown>{message.content}</Markdown>
+                <div className="inline">
+                  <Markdown>{message.content}</Markdown>
+                </div>
                 {isGeneratingThis && (
-                  <span className="inline-block w-1.5 h-4 ml-1.5 align-middle bg-slate/70 animate-pulse" />
+                  <span className="inline-block w-1.5 h-4 ml-1 align-middle bg-slate/70 animate-pulse" />
                 )}
               </div>
             </div>
@@ -77,20 +111,18 @@ export default function MessageList() {
         })
       )}
 
-      {isStreaming &&
-        messages.length > 0 &&
-        messages.at(-1)?.role === 'user' && (
-          <div className="flex items-end gap-2.5 mr-auto max-w-[80%]">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-mint text-slate border border-sky">
-              <span className="w-4 h-4">B</span>
-            </div>
-            <div className="px-4 py-3 rounded-2xl rounded-bl-xs bg-white/70 border border-sky text-slate flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-slate animate-bounce [animation-delay:-0.3s]" />
-              <span className="w-2 h-2 rounded-full bg-slate animate-bounce [animation-delay:-0.15s]" />
-              <span className="w-2 h-2 rounded-full bg-slate animate-bounce" />
-            </div>
+      {showTypingIndicator && (
+        <div className="flex items-end gap-2.5 mr-auto max-w-[80%]">
+          <div className="w-8 h-8 rounded-full flex items-center justify-center bg-mint text-slate border border-sky shrink-0">
+            <span className="font-bold">B</span>
           </div>
-        )}
+          <div className="px-4 py-3 rounded-2xl rounded-bl-xs bg-white/70 border border-sky text-slate flex items-center gap-1.5 h-11">
+            <span className="w-2 h-2 rounded-full bg-slate animate-bounce [animation-delay:-0.3s]" />
+            <span className="w-2 h-2 rounded-full bg-slate animate-bounce [animation-delay:-0.15s]" />
+            <span className="w-2 h-2 rounded-full bg-slate animate-bounce" />
+          </div>
+        </div>
+      )}
 
       <div ref={messagesEndRef} />
     </div>

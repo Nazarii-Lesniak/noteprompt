@@ -2,8 +2,6 @@ import { createClient } from '@/lib/supabase/client';
 
 import { AuthResult } from './authErrors';
 
-const supabase = createClient();
-
 interface SignInParams {
   email: string;
   password: string;
@@ -13,6 +11,7 @@ export async function signIn({
   email,
   password,
 }: SignInParams): Promise<AuthResult> {
+  const supabase = createClient();
   const { error } = await supabase.auth.signInWithPassword({
     email,
     password,

@@ -2,8 +2,6 @@ import { createClient } from '@/lib/supabase/client';
 
 import { AuthResult, normalizedSignUpError } from './authErrors';
 
-const supabase = createClient();
-
 interface SignUpParams {
   name: string;
   email: string;
@@ -15,6 +13,7 @@ export async function signUp({
   email,
   password,
 }: SignUpParams): Promise<AuthResult> {
+  const supabase = createClient();
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
