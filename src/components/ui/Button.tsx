@@ -4,6 +4,7 @@ import { buttonVariants } from './buttons.variants';
 
 interface ButtonProps extends ComponentProps<'button'> {
   variant?: 'primary' | 'accent';
+  fullWidth?: boolean;
 }
 
 export function Button({
@@ -12,7 +13,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button {...props} className={buttonVariants({ variant, fullWidth: true })}>
+    <button {...props} className={buttonVariants({ variant, fullWidth: false })}>
       {children}
     </button>
   );

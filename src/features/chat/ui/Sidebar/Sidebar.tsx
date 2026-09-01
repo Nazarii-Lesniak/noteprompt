@@ -10,8 +10,8 @@ import { useAuthStore } from '@/features/auth/store/useAuthStore';
 import { useChatStore } from '@/features/chat/store/useChatStore';
 import { useLayoutStore } from '@/store/useLayoutStore';
 
-import { Button } from '../../../components/ui/Button';
-import { Input } from '../../../components/ui/Input';
+import { Button } from '../../../../components/ui/Button';
+import { Input } from '../../../../components/ui/Input';
 
 export default function Sidebar() {
   const { isSidebarOpen, toggleSidebar } = useLayoutStore();
