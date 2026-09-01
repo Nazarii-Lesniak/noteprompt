@@ -10,10 +10,12 @@ export const buttonVariants = cva(
       },
       fullWidth: {
         true: 'w-full',
+        false: '',
       },
     },
     defaultVariants: {
       variant: 'primary',
+      fullWidth: false,
     },
   },
 );

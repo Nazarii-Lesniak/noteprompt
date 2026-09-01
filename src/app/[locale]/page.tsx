@@ -1,5 +1,5 @@
-import MessageList from '@/features/chat/components/MessageList';
-import ChatInput from '@/features/chat/components/ChatInput';
+import MessageList from '@/features/chat/ui/MessageList/MessageList';
+import ChatInput from '@/features/chat/ui/ChatInput/ChatInput';
 
 export default function Home() {
   return (
